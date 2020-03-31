@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BukuBesar" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b832eaf5-95cd-4890-8dad-c019814df488">
+	<property name="ireport.zoom" value="2.1435888100000224"/>
+	<property name="ireport.x" value="222"/>
+	<property name="ireport.y" value="165"/>
+	<parameter name="id" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="bulan" class="java.lang.String"/>
+	<parameter name="nm_akun" class="java.lang.String"/>
+	<parameter name="kdAkun" class="java.lang.String"/>
+	<parameter name="saldo" class="java.lang.String"/>
+	<parameter name="periode" class="java.lang.String"/>
+	<parameter name="mutasi" class="java.lang.String"/>
+	<parameter name="sum_deb" class="java.lang.String"/>
+	<parameter name="sm_kre" class="java.lang.Integer"/>
+	<parameter name="sm_lr_deb" class="java.lang.Integer"/>
+	<parameter name="sm_lr_kre" class="java.lang.Integer"/>
+	<parameter name="nr_deb" class="java.lang.Integer"/>
+	<parameter name="sm_nr_kre" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT a.id_account,a.nm_account,b.j_pos_laporan as p_lap,b.j_saldo,(select CONCAT('Rp ',fRupiah(c.saldo))  from trans_saldo c where c.id_account=a.id_account  order by c.crt_tgl desc limit 1) as saldo
+FROM `m_account` `a`
+JOIN trans_saldo b on a.id_account=b.id_account
+where s_saldo=0]]>
+	</queryString>
+	<field name="id_account" class="java.lang.String"/>
+	<field name="nm_account" class="java.lang.String"/>
+	<field name="p_lap" class="java.lang.String"/>
+	<field name="j_saldo" class="java.lang.String"/>
+	<field name="saldo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7c8a9eae-76ae-4b61-a235-df40bd6f48a7" mode="Opaque" x="0" y="0" width="802" height="37" backcolor="#FFFFFF"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Double"/>
+					<bottomPen lineWidth="0.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="53" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement uuid="3e82f789-85b4-4a48-8e89-edc445164745" x="241" y="20" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DEBET"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="74908a52-a08e-4ebf-8097-647b9a6e0458" x="322" y="20" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["KREDIT"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6f6d0a73-71b9-4d48-aa87-d6a8d471a158" x="567" y="20" width="77" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["KREDIT"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8a073891-9b00-4511-89e1-f347f012711b" x="486" y="20" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DEBET"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="04e9429b-8bbf-4ddd-9095-8a8f029ee746" x="241" y="0" width="162" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NERACA SALDO"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="23c2a24e-e199-412d-8733-f3c2d79f3010" x="486" y="0" width="158" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["LABA RUGI"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="89ef9bb4-c403-4a45-8b2f-d244e14a0b65" x="644" y="0" width="158" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NERACA"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8c8721db-a8a9-4d43-8e62-e0dfe7d98f3a" x="725" y="20" width="77" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["KREDIT"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="64513e66-367f-4d1a-b45e-1bb82fc63adc" x="644" y="20" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DEBET"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f0706650-c337-4aeb-81ec-2798867d7931" x="90" y="0" width="91" height="40"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["NAMA AKUN"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d78d8e38-ff57-4191-b169-9c952bb2cf7f" x="0" y="0" width="90" height="40"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["KODE AKUN"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ff8600d4-2e59-41d9-bd87-029977d92279" x="403" y="0" width="83" height="40"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[POS LAPORAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b048c58-fa5d-4957-8364-9e8476928edd" x="181" y="0" width="60" height="40"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[POS SALDO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement uuid="739e7bc8-e355-4c54-bac4-e2b2000d13e9" x="0" y="0" width="90" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_account}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d0fc558d-f86d-46e3-83ea-40ca823b2f2c" x="90" y="0" width="91" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_account}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bc89ded8-e230-4e5d-ae00-6fe568d85bbd" x="181" y="0" width="60" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{j_saldo}=="KRE" ?"KREDIT":
+($F{j_saldo}=="DEB"?"DEBET":"-"))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c22ac359-4987-4f7a-bf77-49578258caea" x="403" y="0" width="83" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{p_lap}=="NER" ? "NERACA":
+($F{p_lap}=="KRE" ? "KREDIT":"-"))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c9eb4f93-6615-4645-98cd-c1aaee68f664" x="241" y="0" width="81" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{j_saldo}=="DEB" ? $F{saldo} :"-")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="db9e7dd4-a7ee-40d8-9503-fad1bd365049" x="322" y="0" width="81" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{j_saldo}=="KRE" ?$F{saldo} :"-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3b92d921-751b-42be-8c0e-b0a3c0045e92" x="486" y="0" width="81" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{p_lap}=="LBRG" ?
+    ($F{j_saldo}=="DEB"?$F{saldo}:"-"):"-")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a0eb7b4f-e91e-4749-be0b-933b9d79d822" x="567" y="0" width="77" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{p_lap}=="LBRG" ?
+    ($F{j_saldo}=="KRE"?$F{saldo}:"-"):"-")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="812611a0-c7d4-497f-ac5a-b21d308d24ac" x="644" y="0" width="81" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{p_lap}=="NER" ?
+    ($F{j_saldo}=="DEB"?$F{saldo}:"-"):"-")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f20a7306-5808-44f9-8f00-27746c674ee8" x="725" y="0" width="77" height="20"/>
+				<box leftPadding="3">
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{p_lap}=="NER" ?
+    ($F{j_saldo}=="KRE"?$F{saldo}:"-"):"-")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<textField>
+				<reportElement uuid="064d0438-250b-4800-ad62-89803f8351d8" x="241" y="0" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{sum_deb}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="67f924a2-0b1b-4cd3-a3b6-3c4a684668a2" x="322" y="0" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{sm_kre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
